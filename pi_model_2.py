@@ -21,7 +21,7 @@ sigma_jump = st.sidebar.number_input("Jump Std Dev (σ_J)", value=0.0, step=0.01
 # Core model logic
 def single_goal_prob(F, G, sigma, T, r, lambda_jump, mu_jump, sigma_jump):
     G_discounted = G * np.exp(-r * T)
-    sigma_eff_sq = sigma*2 + lambda_jump * (sigma_jump*2 + mu_jump*2)
+    sigma_eff_sq = sigma**2 + lambda_jump * (sigma_jump**2 + mu_jump**2)
     mu_eff = -0.5 * sigma_eff_sq + lambda_jump * mu_jump
     denominator = np.sqrt(sigma_eff_sq * T)
     if denominator == 0:
